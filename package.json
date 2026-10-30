@@ -1,0 +1,20 @@
+{
+  "name": "mono",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "MONO — Job Application Tracker & Resume Manager (MERN)",
+  "scripts": {
+    "install:all": "npm install && npm install --prefix server && npm install --prefix client",
+    "dev": "concurrently -n api,web -c gray,white \"npm:dev:server\" \"npm:dev:client\"",
+    "dev:server": "npm run dev --prefix server",
+    "dev:client": "npm run dev --prefix client",
+    "seed": "npm run seed --prefix server",
+    "add-samples": "npm run add-samples --prefix server --",
+    "build": "npm install --prefix server && npm install --include=dev --prefix client && npm run build --prefix client",
+    "start": "npm start --prefix server"
+  },
+  "devDependencies": {
+    "concurrently": "^10.0.6"
+  }
+}

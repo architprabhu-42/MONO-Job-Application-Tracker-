@@ -1,0 +1,23 @@
+# Render Blueprint: one web service that runs the API and serves the built React app.
+# Fill in MONGODB_URI in the Render dashboard after creating the service.
+services:
+  - type: web
+    name: mono
+    runtime: node
+    plan: free
+    buildCommand: npm run build
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: MONGODB_URI
+        sync: false
+      - key: SESSION_SECRET
+        generateValue: true
+      - key: STORAGE_DRIVER
+        value: gridfs
+      - key: COOKIE_SAMESITE
+        value: lax
+      - key: CLIENT_URL
+        sync: false
